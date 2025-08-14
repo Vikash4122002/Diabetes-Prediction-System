@@ -54,11 +54,11 @@ class DiabetesPredictionSystem:
             self.model_scores[name] = {'acc': acc, 'auc': auc}
 
     def evaluate(self):
-        print("\n📊 Model Performance")
+        print("\n Model Performance")
         for name, score in self.model_scores.items():
             print(f"{name}: Accuracy = {score['acc']:.4f}, AUC = {score['auc']:.4f}")
         best = max(self.model_scores, key=lambda x: self.model_scores[x]['acc'])
-        print(f"\n✅ Best Model: {best}")
+        print(f"\n Best Model: {best}")
         y_pred = self.models[best].predict(self.X_test_scaled if best in ['LogReg', 'SVM', 'KNN'] else self.X_test)
         print("\nClassification Report:")
         print(classification_report(self.y_test, y_pred))
@@ -94,13 +94,14 @@ def main():
                    insulin, bmi, dpf, age]
 
         result = system.predict(patient)
-        print("\n🎯 Prediction Result:")
+        print("\n Prediction Result:")
         print(result)
 
     except ValueError:
-        print("❌ Please enter valid numeric values.")
+        print(" Please enter valid numeric values.")
     except Exception as e:
-        print(f"⚠️ An error occurred: {e}")
+        print(f"⚠An error occurred: {e}")
 
 if __name__ == "__main__":
     main()
+
