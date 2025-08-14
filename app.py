@@ -1,16 +1,14 @@
 import streamlit as st
 import numpy as np
 import pickle
-from PIL import Image  # For optional image
+from PIL import Image  
 
-# Configure page
 st.set_page_config(
     page_title="Diabetes Prediction App",
     page_icon="🩺",
     layout="centered"
 )
 
-# Load trained model with error handling
 try:
     @st.cache_resource
     def load_model():
@@ -21,14 +19,12 @@ except Exception as e:
     st.error(f"Error loading model: {str(e)}")
     st.stop()
 
-# Title and description
 st.title("🩺 Diabetes Prediction App")
 st.markdown("""
 Enter patient health metrics below to assess diabetes risk.  
 All fields are required for accurate prediction.
 """)
 
-# Create two columns for better layout
 col1, col2 = st.columns(2)
 
 with col1:
@@ -96,8 +92,8 @@ with col2:
         help="Weight in kg/(height in m)^2 (healthy range: 18.5-24.9)"
     )
 
-# Add clinical reference information
-with st.expander("📊 Clinical Reference Values"):
+
+with st.expander(" Clinical Reference Values"):
     st.markdown("""
     | Metric | Normal Range | At Risk |
     |--------|--------------|---------|
@@ -106,23 +102,21 @@ with st.expander("📊 Clinical Reference Values"):
     | BMI | 18.5-24.9 | ≥30 |
     """)
 
-# Prediction section
 st.divider()
 if st.button('Predict Diabetes Status', type="primary", use_container_width=True):
     # Validate critical inputs
     if Glucose == 0 or BloodPressure == 0:
-        st.warning("⚠️ Warning: Glucose or Blood Pressure values of 0 may indicate missing data and affect prediction accuracy.")
+        st.warning("⚠ Warning: Glucose or Blood Pressure values of 0 may indicate missing data and affect prediction accuracy.")
     
-    # Prepare features
     features = np.array([[Pregnancies, Glucose, BloodPressure, SkinThickness,
                          Insulin, BMI, DiabetesPedigreeFunction, Age]])
     
     try:
-        # Get prediction and probability
+    
         prediction = model.predict(features)
         probability = model.predict_proba(features)[0]
         
-        # Display results
+    
         st.subheader("Prediction Result")
         
         if prediction[0] == 1:
@@ -150,9 +144,9 @@ if st.button('Predict Diabetes Status', type="primary", use_container_width=True
     except Exception as e:
         st.error(f"Prediction error: {str(e)}")
 
-# Footer with disclaimer
 st.divider()
 st.caption("""
-⚠️ **Disclaimer**: This tool provides risk assessment only and is not a diagnostic tool. 
+⚠ **Disclaimer**: This tool provides risk assessment only and is not a diagnostic tool. 
 Always consult with a qualified healthcare professional for medical advice.
+
 """)
