@@ -1,23 +1,26 @@
-# Diabetes Prediction using Machine Learning
+# 🩺 Diabetes Prediction App
 
-## Overview
-A machine learning app to predict whether a person is diabetic using health parameters. Built using Python, trained with Random Forest, and deployed with Streamlit.
+An end-to-end machine learning app that predicts diabetes risk from patient inputs, deployed with Streamlit.
 
-## Input Features
-- Pregnancies
-- Glucose
-- Blood Pressure
-- Skin Thickness
-- Insulin
-- BMI
-- Diabetes Pedigree Function
-- Age
+## 🌐 Live Demo
+[Launch App](https://cbengpyzsjtcr6dg6jep3u.streamlit.app/)
 
-## Tools Used
-- Python
-- Scikit-learn
-- Pandas
-- Streamlit
+## ✨ Features
+- Real-time probability-based risk prediction
+- Clean two-column UI with clinical reference ranges
+- Visual risk indicator (progress bar) + actionable recommendations
+- Robust error handling & cached model loading
 
-## How to Run
-1. Train the model:
+## 🧠 Model
+- Trained on standard Pima-style features: Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DPF, Age  
+- Evaluated via ROC-AUC & accuracy; best model serialized with Pickle
+
+## 🛠 Tech Stack
+Python, NumPy, scikit-learn, Streamlit, Pillow (for icons/images), Pickle
+
+## 🚀 Run Locally
+```bash
+git clone https://github.com/YOUR_USERNAME/diabetes-prediction-app.git
+cd diabetes-prediction-app
+pip install -r requirements.txt
+streamlit run app.py   # or main.py
