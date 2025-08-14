@@ -79,7 +79,7 @@ def main():
     system.train_models()
     system.evaluate()
 
-    print("\n🔮 Predict Diabetes from Your Input")
+    print("\n Predict Diabetes from Your Input")
     try:
         pregnancies = float(input("Enter number of pregnancies: "))
         glucose = float(input("Enter glucose level: "))
@@ -104,4 +104,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
