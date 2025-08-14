@@ -6,4 +6,5 @@ columns = ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness',
 
 df = pd.read_csv(url, names=columns)
 df.to_csv("data/diabetes.csv", index=False)
-print("✅ Saved as data/diabetes.csv")
+print(" Saved as data/diabetes.csv")
+
