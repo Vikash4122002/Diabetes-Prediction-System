@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import pickle
-from PIL import Image  
+ 
 
 st.set_page_config(
     page_title="Diabetes Prediction App",
@@ -150,3 +150,4 @@ st.caption("""
 Always consult with a qualified healthcare professional for medical advice.
 
 """)
+
